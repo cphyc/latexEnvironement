@@ -10,8 +10,8 @@ Put the files in your latex path or just copy them in your LaTeX project directo
 # Dependencies
 
 Required latex packages :
-* tikz
-* varwidth
+* [tikz](www.texample.net/tikz/)
+* [varwidth](http://www.ctan.org/pkg/varwidth)
 * framed
 * amssymb
 
