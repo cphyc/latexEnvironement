@@ -1,7 +1,7 @@
 latexEnvironment
 =================
 
-A Latex Environment to have nice and beautiful theorems and example … even over multiple pages!
+A Latex Environment to have nice and beautiful theorems and examples … even over multiple pages!
 
 # How to use?
 
