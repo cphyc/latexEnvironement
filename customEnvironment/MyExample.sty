@@ -1,76 +1,10 @@
-\RequirePackage{xkeyval}
 \RequirePackage{tikz}
 \RequirePackage{amssymb}
 \RequirePackage{framed}
 
 \RequirePackage{varwidth} % see
                       % https://tex.stackexchange.com/questions/46475/can-we-define-maximum-width-for-a-node
-\RequirePackage{ifthen} % see
-                    % http://www.latex-community.org/forum/viewtopic.php?f=5&t=5976 
-\define@key{boxedtheorem}{titlecolor}{\def\titlecolor{#1}}
-\define@key{boxedtheorem}{titlebackground}{\def\titlebackground{#1}}
-\define@key{boxedtheorem}{background}{\def\background{#1}}
-\define@key{boxedtheorem}{titleboxcolor}{\def\titleboxcolor{#1}}
-\define@key{boxedtheorem}{boxcolor}{\def\boxcolor{#1}}
-\define@key{boxedtheorem}{thcounter}{\def\thcounter{#1}}
-\define@key{boxedtheorem}{size}{\def\size{#1}}
-\define@key{boxedtheorem}{boxradius}{\def\boxradius{#1}}
-\define@key{boxedtheorem}{titleradius}{\def\titleradius{#1}}
-\define@key{boxedtheorem}{titleborder}{\def\titleborder{#1}}
-\define@key{boxedtheorem}{boxborder}{\def\boxborder{#1}}
-\presetkeys{boxedtheorem}{titlecolor = black, titlebackground = white,
-                          background = white,%
-                          titleboxcolor = black, boxcolor = black,%
-                          thcounter=, size = .9\textwidth,%
-                          titleradius=1pt, boxradius=2pt,%
-                          titleborder=thin, % can be very thick
-                          boxborder=thin}{}
 
-\newcommand{\couleurs}[1][]{%
-    \setkeys{boxedtheorem}{#1}
-    \tikzstyle{fancytitle} =[%draw=\titleboxcolor,
-                             rounded corners=\titleradius,
-                             fill=\titlebackground, \titleborder, 
-                             text= \titlecolor, inner sep = 4pt, inner xsep=8pt]
-    \tikzstyle{mybox} = [draw=\boxcolor, fill=\background, \boxborder,
-                        rectangle, rounded corners = \boxradius, inner
-                        sep=10pt]
-}
-
-%Commande générique pour faire un joli encadré
-\newsavebox{\boiboite}
-\newcommand{\titre}{Titre}
-\newenvironment{boite}[2][]%
-    {%
-      \renewcommand{\titre}{#2}
-      \couleurs[#1]
-      \begin{lrbox}{\boiboite}%
-        \begin{minipage}[!h]{\size}
-    }%
-    {%
-       \end{minipage}
-     \end{lrbox}
-       \begin{tikzpicture}
-         \node at [mybox] (box) {\usebox{\boiboite}};
-         \node[fancytitle, right=10pt] at (box.north west) {\titre};
-       \end{tikzpicture}
-    }
-
-\newcommand{\newboxedtheorem}[4][]{%
-    \couleurs[#1]
-    \@ifnotempty{#4}{%
-      \@ifundefined{the#4}{\@ifundefined{\thcounter}{\newcounter{#4}}{%
-      \newcounter{#4}[\thcounter ] } } { }%
-    }
-    \newenvironment{#2}[1][]{%
-      \@ifnotempty{#4}{\refstepcounter{#4}}
-      \noindent\begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
-            (##1)}\textbf{.}}
-      }%
-      {%
-      \end{boite}
-    }
-}
 
 \newcounter{misc}[part]
 
