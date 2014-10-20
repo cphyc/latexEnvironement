@@ -1,0 +1,41 @@
+\documentclass[]{article}
+\usepackage{amsmath} % for math symbols
+\usepackage{MyTheorem}
+\usepackage{MyExample}
+\usepackage{lipsum} % just for the example
+
+\newthm{theorem}{Theorem}
+\newcustomdef{definition}{Definition}
+\newcustomexample{example}{Example}
+\newcustommisc{remark}{Remark}
+
+
+\begin{document}
+\begin{theorem}[Law of big numbers a name (weak form)]
+  Let $\left(X_n \right)_{n\in\mathbb{N}^*}$ be a sequence of independant
+  random variables with the same variance $V(X)$ and the same expected
+  value $E(X)$, then
+  \begin{equation}
+    \forall \epsilon > 0,\quad \lim_{n\rightarrow\infty} \mathbb{P} \left(\left|\frac{\sum_{i=1}^{n}X_i
+}{n} - E(X)\right| \geq \epsilon  \right) = 0
+  \end{equation}
+\end{theorem}
+
+\begin{remark}[Short remark]
+  \lipsum[1]
+\end{remark}
+\begin{definition}[Short definition]
+  \lipsum[1]
+\end{definition}
+\begin{example}[Short example]
+  \lipsum[1]
+\end{example}
+\begin{example}[Loooooong example]
+  \lipsum \lipsum
+\end{example}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
